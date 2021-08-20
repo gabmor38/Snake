@@ -15,20 +15,22 @@ const connect = function() {
   conn.setEncoding('utf8');
 
 // Add an event handler for incoming data.
-conn.on('data', message => {
-  console.log(message);
-});
+  conn.on('data', message => {
+    console.log(message);
+  });
 //Add another "connect" event handles for establishing a connection - send a message that connection is establish and write name of player
-conn.on('connect', () => {
-  console.log("Succesfully connected to game server");
-  conn.write("Name: GMR");
-});
+  conn.on('connect', () => {
+    console.log("Succesfully connected to game server");
+    conn.write("Name: GMR");
+    // function write(){ // create a function with a setInterval to move the snake up - test
+    //   return conn.write("Move: up")
+    });
 
+  //   setInterval(write, 1000)
+  // });
 
 return conn;
-
 }
 console.log('Connecting ...');
-
 
 connect();
