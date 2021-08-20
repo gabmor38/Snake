@@ -1,23 +1,5 @@
 let connection;
 
-const handlerUserInput = function() {
-  if (key === "\u0003") {
-    process.exit();
-  }
-  if (key === "w") {
-    connection.write("Move: up");
-  }
-  if (key === "a") {
-    connection.write("Move: down");
-  }
-  if (key === "s") {
-    connection.write("Move: left");
-  }
-  if (key === "d") {
-    connection.write("Move: right");
-  }
-};
-
 /**
  * Setup User Interface 
  * Specifically, so that we can handle user input via stdin
@@ -32,4 +14,27 @@ const handlerUserInput = function() {
   return stdin;
 };
 
-setupInput();
+// setupInput();
+
+const handlerUserInput = function(key) {
+  if (key === "\u0003") {
+    process.exit();
+  }
+  if (key === "w") {
+    connection.write("Move: up");
+  }
+  if (key === "a") {
+    connection.write("Move: down");
+  }
+  if (key === "\u0073") { //s
+    connection.write("Move: left");
+  }
+  if (key === "d") {
+    connection.write("Move: right");
+  }
+  if (key === "x") {
+    connection.write("Say: Hello");
+  }
+};
+
+module.exports = { setupInput }
