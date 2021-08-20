@@ -1,10 +1,11 @@
 let connection;
+const { MOVE_UP_KEY } = require('./constants');
 
 /**
- * Setup User Interface 
+ * Setup User Interface
  * Specifically, so that we can handle user input via stdin
  */
- const setupInput = function(conn) {
+const setupInput = function(conn) {
   connection = conn;
   const stdin = process.stdin;
   stdin.setRawMode(true);
@@ -14,13 +15,12 @@ let connection;
   return stdin;
 };
 
-// setupInput();
 
 const handlerUserInput = function(key) {
   if (key === "\u0003") {
     process.exit();
   }
-  if (key === "w") {
+  if (key === MOVE_UP_KEY) {
     connection.write("Move: up");
   }
   if (key === "a") {
@@ -37,4 +37,4 @@ const handlerUserInput = function(key) {
   }
 };
 
-module.exports = { setupInput }
+module.exports = { setupInput };
