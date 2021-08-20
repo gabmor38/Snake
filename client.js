@@ -1,5 +1,6 @@
 //play.js = move the connect function from play to here
 const net = require('net');
+const { IP, PORT } = require('./constants');
 
 /**
  * Establishes connection with the game server
@@ -7,8 +8,8 @@ const net = require('net');
 
 const connect = function() {
   const conn = net.createConnection({  //conn object
-    host: "192.168.0.10",
-    port: 50541
+    host: IP, //Server IP Address
+    port: PORT
   });
 
   // INTERPRET INCOMING DATA AS TEXT
@@ -33,4 +34,5 @@ return conn;
 }
 console.log('Connecting ...');
 
-connect();
+
+module.exports = { connect }
